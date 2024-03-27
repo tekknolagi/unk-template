@@ -1,0 +1,22 @@
+#!/bin/sh
+set -eu
+
+# Remove I/ prefix
+filename="$(echo $1 | sed 's/^I\///')"
+# Get first 10 chars (YYYY-MM-DD) and convert to date
+pub_date="$(date -R -d "$(echo "$filename" | cut -c1-10)")"
+title="$(sed 1q "$1")"
+# Render and then HTML-escape body
+body="$(sed 1d "$1" | ./lht | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g')"
+# Remove .lh extension
+link="$baseurl/${filename%.*}"
+
+cat << EOF
+<item>
+    <title>$title</title>
+    <description>$body</description>
+    <pubDate>$pub_date</pubDate>
+    <link>$link</link>
+    <guid isPermaLink="true">$link</guid>
+</item>
+EOF

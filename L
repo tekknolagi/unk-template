@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>$(T|sed 's/<[^>]\+>//g')</title>
+$(q -f S/s.css&&e '<link rel="stylesheet" href="S/s.css">'||
+e '<style>body{max-width:70ch;padding:1em;margin:auto}
+#toc{padding-top:1em;padding-bottom:1em;}</style>')
+$(q "${N%.*}" != index.html&&(e "<h1><a href=\"index.html\">$(sed 1q I/index.html.lh)</a></h1>"))
+<h2>$(T)</h2>
+$(B|./lht)
+$(q "${N%.*}" = index.html&&(e '<ul id="toc">'
+for p in I/*;do (q $p = $F || q $p = I/404.html.lh)&&continue;n="${p#I/}"
+e "<li><a href='${n%.*}'>$(sed 1q $p)</a></li>"
+done;e '</ul>')||(e '<a id="toc" href="index.html">home</a>'))
+<p id="ft">&copy; 2024</p>

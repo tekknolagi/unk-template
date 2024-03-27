@@ -1,0 +1,22 @@
+#!/bin/sh
+set -eu
+
+export baseurl="$(sed 1q baseurl)"
+cat > O/feed.xml << EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>$(sed 1q I/index.html.lh)</title>
+        <description></description>
+        <link>$baseurl</link>
+        <atom:link href="$baseurl/feed.xml" rel="self" type="application/rss+xml" />
+EOF
+for file in I/*; do
+  if [ "$file" != "I/index.html.lh" ] && [ "$file" != "I/404.html.lh" ]; then
+    ./rss1 "$file" >> O/feed.xml
+  fi
+done
+cat >> O/feed.xml << EOF
+    </channel>
+</rss>
+EOF

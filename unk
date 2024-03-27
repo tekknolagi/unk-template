@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+alias c=cat q=test e=echo
+rm -rf O;mkdir -p O
+q -f L||e '`c $F`'>L
+q -d S&&cp -r S O/
+X(){ eval "$(e 'c<<';c "$@";e;e )";}
+for F in I/*
+do q -f "$F"&&(e $F
+N="${F#I/}"
+T(){ sed 1q "$F";}
+B(){ sed 1d "$F";}
+X L>"O/${N%.*}"&)
+done
+./rss
