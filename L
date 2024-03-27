@@ -10,6 +10,7 @@ $(q "${N%.*}" != index.html&&(e "<h1><a href=\"index.html\">$(sed 1q I/index.htm
 $(B|./lht)
 $(q "${N%.*}" = index.html&&(e '<ul id="toc">'
 for p in I/*;do (q $p = $F || q $p = I/404.html.lh)&&continue;n="${p#I/}"
-e "<li><a href='${n%.*}'>$(sed 1q $p)</a></li>"
+pub_date="$(date -d "$(echo "$p" | sed 's/^I\///' | cut -c1-10)" "+%b %d, %Y")"
+e "<li>$pub_date <a href='${n%.*}'>$(sed 1q $p)</a></li>"
 done;e '</ul>')||(e '<a id="toc" href="index.html">home</a>'))
 <p id="ft">&copy; 2024</p>
