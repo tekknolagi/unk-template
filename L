@@ -1,10 +1,14 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>$(T|sed 's/<[^>]\+>//g')</title>
 $(q -f S/s.css&&e '<link rel="stylesheet" href="S/s.css">'||
 e '<style>body{max-width:70ch;padding:1em;margin:auto}
 #toc{padding-top:1em;padding-bottom:1em;}</style>')
+</head>
+<body>
 $(q "${N%.*}" != index.html&&(e "<h1><a href=\"index.html\">$(sed 1q I/index.html.lh)</a></h1>"))
 <h2>$(T)</h2>
 $(B|./lht)
@@ -14,3 +18,5 @@ pub_date="$(date -d "$(echo "$p" | sed 's/^I\///' | cut -c1-10)" "+%b %d, %Y")"
 e "<li>$pub_date <a href='${n%.*}'>$(sed 1q $p)</a></li>"
 done;e '</ul>')||(e '<a id="toc" href="index.html">home</a>'))
 <p id="ft">&copy; 2024</p>
+</body>
+</html>
