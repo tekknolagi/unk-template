@@ -26,6 +26,8 @@ subset of Markdown-ish:
 The template is this shell-esque thing in [`L`](L) that gets included into the
 [`unk`](unk) script.
 
+Make a directory `S` and add static files to it.
+
 ## How to generate the site
 
 Run [`./unk`](unk). The output goes into [`O`](O). This repo also bundles a
