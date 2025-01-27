@@ -26,7 +26,8 @@ subset of Markdown-ish:
 The template is this shell-esque thing in [`L`](L) that gets included into the
 [`unk`](unk) script.
 
-Make a directory `S` and add static files to it.
+Make a directory `S` and add static files to it. If it exists, the file
+[`S/s.css`](S/s.css) will get `link rel`'d in all templated pages.
 
 Set the base URL of the domain pointing to the the website in
 [`baseurl`](baseurl).
