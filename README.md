@@ -28,7 +28,10 @@ The template is this shell-esque thing in [`L`](L) that gets included into the
 
 ## How to generate the site
 
-Run [`./unk`](unk). The output goes into [`O`](O).
+Run [`./unk`](unk). The output goes into [`O`](O). This repo also bundles a
+GitHub Actions script in
+[.github/workflows/deploy.yml](.github/workflows/deploy.yml) that runs it for
+you.
 
 ## What you get
 
