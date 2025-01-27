@@ -28,6 +28,9 @@ The template is this shell-esque thing in [`L`](L) that gets included into the
 
 Make a directory `S` and add static files to it.
 
+Set the base URL of the domain pointing to the the website in
+[`baseurl`](baseurl).
+
 ## How to generate the site
 
 Run [`./unk`](unk). The output goes into [`O`](O). This repo also bundles a
