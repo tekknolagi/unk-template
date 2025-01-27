@@ -29,3 +29,10 @@ The template is this shell-esque thing in [`L`](L) that gets included into the
 ## How to generate the site
 
 Run [`./unk`](unk). The output goes into [`O`](O).
+
+## What you get
+
+* lightweight HTML templating
+* index of posts after content in [I/index.html.lh](I/index.html.lh)
+* RSS feed in [O/feed.xml](O/feed.xml)
+* fastest build times in the West
